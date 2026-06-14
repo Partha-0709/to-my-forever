@@ -1,46 +1,108 @@
 const startDate = new Date("2026-02-22");
-const weddingDate = new Date("2027-01-20");
-const today = new Date();
 
-const diffDays = Math.floor(
-    (today - startDate) / (1000 * 60 * 60 * 24)
-);
+/*
+Wedding Date
+20 January 2027
+Change the time if needed.
+*/
+const weddingDate = new Date("2027-01-20T00:00:00");
 
-document.getElementById("daysCounter").innerText =
-    diffDays + " days";
+// Days Since Relationship Started
 
-const weddingDiff = Math.ceil(
-    (weddingDate - today) / (1000 * 60 * 60 * 24)
-);
+function updateJourney(){
 
-document.getElementById("weddingCounter").innerText =
-    weddingDiff > 0
-        ? weddingDiff + " days to forever"
-        : "We're Married! ❤️";
+    const today = new Date();
 
-/* Secret Message */
+    const diffDays = Math.floor(
+        (today - startDate) / (1000 * 60 * 60 * 24)
+    );
+
+    document.getElementById("daysCounter").innerText =
+        diffDays + " days";
+}
+
+updateJourney();
+
+
+// LIVE Wedding Countdown
+
+function updateWeddingCountdown(){
+
+    const now = new Date();
+
+    const difference = weddingDate - now;
+
+    const weddingCounter =
+        document.getElementById("weddingCounter");
+
+    if(difference <= 0){
+
+        weddingCounter.innerHTML =
+            "We're Married! ❤️";
+
+        return;
+    }
+
+    const days = Math.floor(
+        difference / (1000 * 60 * 60 * 24)
+    );
+
+    const hours = Math.floor(
+        (difference % (1000 * 60 * 60 * 24))
+        / (1000 * 60 * 60)
+    );
+
+    const minutes = Math.floor(
+        (difference % (1000 * 60 * 60))
+        / (1000 * 60)
+    );
+
+    const seconds = Math.floor(
+        (difference % (1000 * 60))
+        / 1000
+    );
+
+    weddingCounter.innerHTML = `
+        ${days} Days ❤️<br>
+        ${hours} Hours 💕<br>
+        ${minutes} Minutes 💖<br>
+        ${seconds} Seconds 💍
+    `;
+}
+
+updateWeddingCountdown();
+
+setInterval(updateWeddingCountdown, 1000);
+
+
+// Secret Message
 
 function showSecret(){
 
-    const secret = document.getElementById("secret");
+    const secret =
+        document.getElementById("secret");
 
     secret.innerText =
         "You are the best thing that has ever happened to me. I love you endlessly, Sowndarya ❤️";
 
-    secret.style.animation = "heartbeat 1s 2";
+    secret.style.animation =
+        "heartbeat 1s 2";
 }
 
-/* Floating Hearts */
+
+// Floating Hearts
 
 setInterval(() => {
 
-    const heart = document.createElement("div");
+    const heart =
+        document.createElement("div");
 
     heart.className = "heart";
 
     heart.innerHTML = "💖";
 
-    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.left =
+        Math.random() * 100 + "vw";
 
     heart.style.fontSize =
         (15 + Math.random() * 30) + "px";
@@ -56,30 +118,37 @@ setInterval(() => {
 
 }, 600);
 
-/* Cursor Sparkles */
+
+// Cursor Sparkles
 
 document.addEventListener("mousemove", e => {
 
-    const sparkle = document.createElement("div");
+    const sparkle =
+        document.createElement("div");
 
     sparkle.className = "sparkle";
 
     sparkle.innerHTML = "✨";
 
-    sparkle.style.left = e.clientX + "px";
+    sparkle.style.left =
+        e.clientX + "px";
 
-    sparkle.style.top = e.clientY + "px";
+    sparkle.style.top =
+        e.clientY + "px";
 
     document.body.appendChild(sparkle);
 
     setTimeout(() => {
         sparkle.remove();
     }, 800);
+
 });
 
-/* Scroll Reveal */
 
-const observer = new IntersectionObserver(entries => {
+// Scroll Reveal
+
+const observer =
+    new IntersectionObserver(entries => {
 
     entries.forEach(entry => {
 
@@ -92,7 +161,8 @@ const observer = new IntersectionObserver(entries => {
 
 });
 
-document.querySelectorAll(".reveal").forEach(card => {
+document.querySelectorAll(".reveal")
+.forEach(card => {
 
     observer.observe(card);
 
