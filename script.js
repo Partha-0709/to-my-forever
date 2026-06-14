@@ -7,45 +7,55 @@ Premium Romantic Website
 
 
 /* ==========================
-   DAYS SINCE OUR JOURNEY
-========================== */
-
-/* ==========================
    LIVE OUR JOURNEY COUNTER
 ========================== */
 
-const startDate = new Date("2026-02-22T19:30:00");
+const startDate = new Date("2026-02-22T19:00:00");
 
 function updateJourney() {
 
     const now = new Date();
 
-    const difference = now - startDate;
+    let years = now.getFullYear() - startDate.getFullYear();
 
-    const days = Math.floor(
-        difference / (1000 * 60 * 60 * 24)
-    );
+    let months = now.getMonth() - startDate.getMonth();
 
-    const hours = Math.floor(
-        (difference % (1000 * 60 * 60 * 24)) /
-        (1000 * 60 * 60)
-    );
+    let days = now.getDate() - startDate.getDate();
 
-    const minutes = Math.floor(
-        (difference % (1000 * 60 * 60)) /
-        (1000 * 60)
-    );
+    if (days < 0) {
 
-    const seconds = Math.floor(
-        (difference % (1000 * 60)) /
-        1000
-    );
+        months--;
+
+        const previousMonth = new Date(
+            now.getFullYear(),
+            now.getMonth(),
+            0
+        );
+
+        days += previousMonth.getDate();
+    }
+
+    if (months < 0) {
+
+        years--;
+
+        months += 12;
+    }
+
+    const hours = now.getHours();
+
+    const minutes = now.getMinutes();
+
+    const seconds = now.getSeconds();
 
     document.getElementById("daysCounter").innerHTML = `
-        ${days} Days ❤️<br>
-        ${hours} Hours 💕<br>
-        ${minutes} Minutes 💖<br>
-        ${seconds} Seconds ⏳
+        ${years} Year${years !== 1 ? "s" : ""} ❤️ •
+        ${months} Month${months !== 1 ? "s" : ""} 💕 •
+        ${days} Day${days !== 1 ? "s" : ""} 💖
+        <br>
+        ${hours} Hour${hours !== 1 ? "s" : ""} ✨ •
+        ${minutes} Minute${minutes !== 1 ? "s" : ""} 🌷 •
+        ${seconds} Second${seconds !== 1 ? "s" : ""} ⏳
     `;
 }
 
