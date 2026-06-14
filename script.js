@@ -50,11 +50,11 @@ function updateJourney() {
 
     document.getElementById("daysCounter").innerHTML = `
         ${years} Year${years !== 1 ? "s" : ""} ❤️ •
-        ${months} Month${months !== 1 ? "s" : ""} 💕 •
+        ${months} Month${months !== 1 ? "s" : ""} 💕 • <br>
         ${days} Day${days !== 1 ? "s" : ""} 💖
         <br>
         ${hours} Hour${hours !== 1 ? "s" : ""} ✨ •
-        ${minutes} Minute${minutes !== 1 ? "s" : ""} 🌷 •
+        ${minutes} Minute${minutes !== 1 ? "s" : ""} 🌷 • <br>
         ${seconds} Second${seconds !== 1 ? "s" : ""} ⏳
     `;
 }
