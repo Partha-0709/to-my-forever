@@ -39,7 +39,7 @@ Example:
 2027-01-20T07:30:00
 */
 
-const weddingDate = new Date("2027-01-20T00:00:00");
+const weddingDate = new Date("2027-01-20T09:30:00");
 
 function updateWeddingCountdown() {
 
