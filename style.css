@@ -6,6 +6,11 @@ body{
     background:linear-gradient(135deg,#ffe5ec,#fff1f5);
 }
 
+#daysCounter{
+    color:#d6336c;
+    font-weight:600;
+    line-height:1.8;
+}
 /* Tap To Enter Overlay */
 
 #musicOverlay{
