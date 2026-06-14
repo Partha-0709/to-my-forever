@@ -10,22 +10,48 @@ Premium Romantic Website
    DAYS SINCE OUR JOURNEY
 ========================== */
 
-const startDate = new Date("2026-02-22");
+/* ==========================
+   LIVE OUR JOURNEY COUNTER
+========================== */
+
+const startDate = new Date("2026-02-22T19:30:00");
 
 function updateJourney() {
 
-    const today = new Date();
+    const now = new Date();
 
-    const diffDays = Math.floor(
-        (today - startDate) / (1000 * 60 * 60 * 24)
+    const difference = now - startDate;
+
+    const days = Math.floor(
+        difference / (1000 * 60 * 60 * 24)
     );
 
-    document.getElementById("daysCounter").innerText =
-        diffDays + " days";
+    const hours = Math.floor(
+        (difference % (1000 * 60 * 60 * 24)) /
+        (1000 * 60 * 60)
+    );
+
+    const minutes = Math.floor(
+        (difference % (1000 * 60 * 60)) /
+        (1000 * 60)
+    );
+
+    const seconds = Math.floor(
+        (difference % (1000 * 60)) /
+        1000
+    );
+
+    document.getElementById("daysCounter").innerHTML = `
+        ${days} Days ❤️<br>
+        ${hours} Hours 💕<br>
+        ${minutes} Minutes 💖<br>
+        ${seconds} Seconds ⏳
+    `;
 }
 
 updateJourney();
 
+setInterval(updateJourney, 1000);
 
 /* ==========================
    LIVE WEDDING COUNTDOWN
