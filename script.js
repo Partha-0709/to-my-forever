@@ -1,15 +1,18 @@
+/*
+=========================================
+TO MY FOREVER, SOWNDARYA ❤️
+Premium Romantic Website
+=========================================
+*/
+
+
+/* ==========================
+   DAYS SINCE OUR JOURNEY
+========================== */
+
 const startDate = new Date("2026-02-22");
 
-/*
-Wedding Date
-20 January 2027
-Change the time if needed.
-*/
-const weddingDate = new Date("2027-01-20T09:30:00");
-
-// Days Since Relationship Started
-
-function updateJourney(){
+function updateJourney() {
 
     const today = new Date();
 
@@ -24,9 +27,21 @@ function updateJourney(){
 updateJourney();
 
 
-// LIVE Wedding Countdown
+/* ==========================
+   LIVE WEDDING COUNTDOWN
+========================== */
 
-function updateWeddingCountdown(){
+/*
+Change the time below if your
+muhurtham is at a specific time.
+
+Example:
+2027-01-20T07:30:00
+*/
+
+const weddingDate = new Date("2027-01-20T00:00:00");
+
+function updateWeddingCountdown() {
 
     const now = new Date();
 
@@ -35,7 +50,7 @@ function updateWeddingCountdown(){
     const weddingCounter =
         document.getElementById("weddingCounter");
 
-    if(difference <= 0){
+    if (difference <= 0) {
 
         weddingCounter.innerHTML =
             "We're Married! ❤️";
@@ -48,18 +63,18 @@ function updateWeddingCountdown(){
     );
 
     const hours = Math.floor(
-        (difference % (1000 * 60 * 60 * 24))
-        / (1000 * 60 * 60)
+        (difference % (1000 * 60 * 60 * 24)) /
+        (1000 * 60 * 60)
     );
 
     const minutes = Math.floor(
-        (difference % (1000 * 60 * 60))
-        / (1000 * 60)
+        (difference % (1000 * 60 * 60)) /
+        (1000 * 60)
     );
 
     const seconds = Math.floor(
-        (difference % (1000 * 60))
-        / 1000
+        (difference % (1000 * 60)) /
+        1000
     );
 
     weddingCounter.innerHTML = `
@@ -75,9 +90,11 @@ updateWeddingCountdown();
 setInterval(updateWeddingCountdown, 1000);
 
 
-// Secret Message
+/* ==========================
+   SECRET MESSAGE
+========================== */
 
-function showSecret(){
+function showSecret() {
 
     const secret =
         document.getElementById("secret");
@@ -90,7 +107,65 @@ function showSecret(){
 }
 
 
-// Floating Hearts
+/* ==========================
+   TAP TO ENTER MUSIC
+   (SMARTPHONE FRIENDLY)
+========================== */
+
+const overlay =
+    document.getElementById("musicOverlay");
+
+const bgMusic =
+    document.getElementById("bgMusic");
+
+let musicStarted = false;
+
+function startExperience() {
+
+    if (musicStarted) return;
+
+    musicStarted = true;
+
+    bgMusic.play()
+        .then(() => {
+
+            overlay.classList.add("hidden");
+
+        })
+        .catch(error => {
+
+            console.log(
+                "Music playback prevented:",
+                error
+            );
+
+            overlay.classList.add("hidden");
+        });
+}
+
+
+/*
+Works on:
+✔ Android
+✔ iPhone
+✔ Tablets
+✔ Desktop
+*/
+
+overlay.addEventListener(
+    "click",
+    startExperience
+);
+
+overlay.addEventListener(
+    "touchstart",
+    startExperience
+);
+
+
+/* ==========================
+   FLOATING HEARTS
+========================== */
 
 setInterval(() => {
 
@@ -113,57 +188,112 @@ setInterval(() => {
     document.body.appendChild(heart);
 
     setTimeout(() => {
+
         heart.remove();
+
     }, 10000);
 
 }, 600);
 
 
-// Cursor Sparkles
+/* ==========================
+   CURSOR SPARKLES
+========================== */
 
-document.addEventListener("mousemove", e => {
+/*
+Cursor sparkles don't exist on
+touch devices, so disable them
+for smartphones.
+*/
 
-    const sparkle =
-        document.createElement("div");
+if (!("ontouchstart" in window)) {
 
-    sparkle.className = "sparkle";
+    document.addEventListener(
+        "mousemove",
+        e => {
 
-    sparkle.innerHTML = "✨";
+            const sparkle =
+                document.createElement("div");
 
-    sparkle.style.left =
-        e.clientX + "px";
+            sparkle.className =
+                "sparkle";
 
-    sparkle.style.top =
-        e.clientY + "px";
+            sparkle.innerHTML = "✨";
 
-    document.body.appendChild(sparkle);
+            sparkle.style.left =
+                e.clientX + "px";
 
-    setTimeout(() => {
-        sparkle.remove();
-    }, 800);
+            sparkle.style.top =
+                e.clientY + "px";
 
-});
+            document.body.appendChild(
+                sparkle
+            );
+
+            setTimeout(() => {
+
+                sparkle.remove();
+
+            }, 800);
+        }
+    );
+}
 
 
-// Scroll Reveal
+/* ==========================
+   SCROLL REVEAL ANIMATIONS
+========================== */
 
 const observer =
-    new IntersectionObserver(entries => {
+    new IntersectionObserver(
+        entries => {
 
-    entries.forEach(entry => {
+            entries.forEach(entry => {
 
-        if(entry.isIntersecting){
+                if (
+                    entry.isIntersecting
+                ) {
 
-            entry.target.classList.add("active");
+                    entry.target.classList.add(
+                        "active"
+                    );
+                }
+
+            });
+
+        },
+        {
+            threshold: 0.15
         }
+    );
+
+document
+    .querySelectorAll(".reveal")
+    .forEach(card => {
+
+        observer.observe(card);
 
     });
 
-});
 
-document.querySelectorAll(".reveal")
-.forEach(card => {
+/* ==========================
+   OPTIONAL:
+   RESUME MUSIC WHEN TAB
+   BECOMES ACTIVE AGAIN
+========================== */
 
-    observer.observe(card);
+document.addEventListener(
+    "visibilitychange",
+    () => {
 
-});
+        if (
+            !document.hidden &&
+            musicStarted &&
+            bgMusic.paused
+        ) {
+
+            bgMusic.play().catch(() => {});
+        }
+
+    }
+);
