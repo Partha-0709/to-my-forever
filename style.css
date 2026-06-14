@@ -1,0 +1,38 @@
+body{
+font-family:Poppins,sans-serif;
+background:linear-gradient(135deg,#ffe5ec,#fff1f5);
+margin:0;
+color:#444;
+overflow-x:hidden;
+}
+.container{max-width:900px;margin:auto;padding:20px;text-align:center;}
+h1{font-family:'Dancing Script',cursive;font-size:3rem;color:#d6336c;}
+.quote{font-style:italic;}
+.card{
+background:white;
+padding:20px;
+margin:20px 0;
+border-radius:20px;
+box-shadow:0 4px 15px rgba(0,0,0,0.1);
+}
+button{
+padding:12px 20px;
+border:none;
+border-radius:25px;
+font-size:1rem;
+cursor:pointer;
+}
+.hearts::before{
+content:"❤️ ❤️ ❤️ ❤️ ❤️";
+position:fixed;
+width:100%;
+top:0;
+left:0;
+animation:float 8s linear infinite;
+opacity:0.4;
+}
+@keyframes float{
+0%{transform:translateY(100vh);}
+100%{transform:translateY(-100vh);}
+}
+ul{text-align:left;display:inline-block;}
