@@ -5,7 +5,7 @@ Wedding Date
 20 January 2027
 Change the time if needed.
 */
-const weddingDate = new Date("2027-01-20T00:00:00");
+const weddingDate = new Date("2027-01-20T09:30:00");
 
 // Days Since Relationship Started
 
