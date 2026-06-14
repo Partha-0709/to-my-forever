@@ -13,29 +13,74 @@
 
 <body>
 
+<!-- Tap To Enter Overlay -->
+
+<div id="musicOverlay">
+
+    <div class="overlay-content">
+
+        <h1 class="overlay-title">
+            ❤️ Tap Anywhere To Begin Our Forever ❤️
+        </h1>
+
+        <p class="overlay-subtitle">
+            ✨ A little surprise awaits you ✨
+        </p>
+
+        <div class="tap-heart">
+            💖
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- Animated Background -->
+
 <div class="animated-bg"></div>
+
+
+<!-- Main Container -->
 
 <div class="container">
 
-    <h1>To My Forever, Sowndarya ❤️</h1>
+    <h1>
+        To My Forever, Sowndarya ❤️
+    </h1>
 
     <p class="quote">
         "Every love story is beautiful, but ours is my favorite."
     </p>
 
+
+    <!-- Our Journey -->
+
     <div class="card reveal">
+
         <h2>⏳ Our Journey</h2>
 
-        <p>Days since 22 February 2026:</p>
+        <p>
+            Days since 22 February 2026:
+        </p>
 
         <h3 id="daysCounter"></h3>
+
     </div>
 
+
+    <!-- Wedding Countdown -->
+
     <div class="card reveal">
+
         <h2>💍 Wedding Countdown</h2>
 
         <h3 id="weddingCounter"></h3>
+
     </div>
+
+
+    <!-- Why I Love You -->
 
     <div class="card reveal">
 
@@ -53,27 +98,51 @@
 
     </div>
 
+
+    <!-- Letter -->
+
     <div class="card reveal">
 
         <h2>💌 A Letter To You</h2>
 
         <p>
-        My Dearest Sowndarya,<br><br>
 
-        Thank you for coming into my life and filling it with love, laughter, and peace.
-        You have shown me what it means to be truly cared for and understood.
-        Through every smile, every conversation, and every little moment,
-        you've made my world brighter.<br><br>
+            My Dearest Sowndarya,
 
-        I promise to stand beside you through every season of life,
-        to support your dreams, protect your heart, and choose you every single day.
-        No matter how much time passes, my love for you will only grow stronger.<br><br>
+            <br><br>
 
-        Forever yours,<br>
-        Partha ❤️
+            Thank you for coming into my life and filling it with love,
+            laughter, and peace.
+
+            You have shown me what it means to be truly cared for and
+            understood.
+
+            Through every smile, every conversation, and every little moment,
+            you've made my world brighter.
+
+            <br><br>
+
+            I promise to stand beside you through every season of life,
+            to support your dreams, protect your heart,
+            and choose you every single day.
+
+            No matter how much time passes,
+            my love for you will only grow stronger.
+
+            <br><br>
+
+            Forever yours,
+
+            <br>
+
+            Partha ❤️
+
         </p>
 
     </div>
+
+
+    <!-- Secret Message -->
 
     <div class="card reveal">
 
@@ -85,6 +154,9 @@
 
     </div>
 
+
+    <!-- Music -->
+
     <div class="card reveal">
 
         <h2>🎵 Background Music</h2>
@@ -95,13 +167,14 @@
             to this folder.
         </p>
 
-        <audio controls autoplay loop>
+        <audio id="bgMusic" controls loop>
             <source src="love.mp3" type="audio/mpeg">
         </audio>
 
     </div>
 
 </div>
+
 
 <script src="script.js"></script>
 
