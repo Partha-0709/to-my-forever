@@ -6,40 +6,135 @@ body{
     background:linear-gradient(135deg,#ffe5ec,#fff1f5);
 }
 
+/* Tap To Enter Overlay */
+
+#musicOverlay{
+    position:fixed;
+    inset:0;
+    background:linear-gradient(
+        135deg,
+        rgba(255,229,236,.98),
+        rgba(255,241,245,.98)
+    );
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    text-align:center;
+
+    z-index:9999;
+
+    cursor:pointer;
+
+    transition:opacity 1s ease,
+               visibility 1s ease;
+}
+
+#musicOverlay.hidden{
+    opacity:0;
+    visibility:hidden;
+}
+
+.overlay-content{
+    padding:30px;
+    animation:fadeUp 1.5s ease;
+}
+
+.overlay-title{
+    font-family:'Dancing Script',cursive;
+    font-size:3rem;
+    color:#d6336c;
+    margin-bottom:15px;
+
+    text-shadow:
+        0 0 10px rgba(214,51,108,.3),
+        0 0 20px rgba(214,51,108,.2);
+
+    animation:heartbeat 2s infinite;
+}
+
+.overlay-subtitle{
+    font-size:1.1rem;
+    color:#666;
+    margin-bottom:30px;
+}
+
+.tap-heart{
+    font-size:4rem;
+    animation:
+        heartbeat 1.5s infinite,
+        floatHeart 3s ease-in-out infinite;
+}
+
+@keyframes fadeUp{
+    from{
+        opacity:0;
+        transform:translateY(30px);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+@keyframes floatHeart{
+    0%,100%{
+        transform:translateY(0);
+    }
+
+    50%{
+        transform:translateY(-15px);
+    }
+}
+
 /* Animated Background */
 
 .animated-bg{
     position:fixed;
     inset:0;
-    z-index:-2;
     overflow:hidden;
+    z-index:-2;
 }
 
 .animated-bg::before,
 .animated-bg::after{
     content:"";
     position:absolute;
+
     width:60vmax;
     height:60vmax;
+
     border-radius:50%;
+
     background:rgba(255,255,255,.25);
-    animation:floatBg 18s ease-in-out infinite alternate;
+
+    animation:floatBg 20s ease-in-out infinite alternate;
+}
+
+.animated-bg::before{
+    top:-20%;
+    left:-10%;
 }
 
 .animated-bg::after{
-    right:-20%;
     bottom:-20%;
-    animation-duration:24s;
+    right:-10%;
+    animation-duration:28s;
 }
 
 @keyframes floatBg{
     from{
         transform:translateY(0) scale(1);
     }
+
     to{
         transform:translateY(-80px) scale(1.15);
     }
 }
+
+/* Layout */
 
 .container{
     max-width:900px;
@@ -53,16 +148,19 @@ h1{
     font-size:3rem;
     color:#d6336c;
 
-    animation:heartbeat 2s infinite;
-
     text-shadow:
-    0 0 10px rgba(214,51,108,.4),
-    0 0 20px rgba(214,51,108,.3);
+        0 0 10px rgba(214,51,108,.4),
+        0 0 20px rgba(214,51,108,.3);
+
+    animation:heartbeat 2s infinite;
 }
 
 .quote{
     font-style:italic;
+    margin-bottom:30px;
 }
+
+/* Glassmorphism Cards */
 
 .card{
     background:rgba(255,255,255,.72);
@@ -71,13 +169,14 @@ h1{
 
     border:1px solid rgba(255,255,255,.35);
 
+    border-radius:25px;
+
     padding:25px;
 
     margin:20px 0;
 
-    border-radius:25px;
-
-    box-shadow:0 8px 30px rgba(0,0,0,.12);
+    box-shadow:
+        0 8px 30px rgba(0,0,0,.12);
 
     transition:all .5s ease;
 }
@@ -86,6 +185,12 @@ h1{
     transform:translateY(-8px);
 }
 
+.card h2{
+    color:#d6336c;
+}
+
+/* Buttons */
+
 button{
     padding:12px 25px;
 
@@ -93,25 +198,31 @@ button{
 
     border-radius:30px;
 
-    cursor:pointer;
-
-    font-size:1rem;
-
     background:#ff5c8d;
 
     color:white;
+
+    font-size:1rem;
+
+    cursor:pointer;
 
     transition:all .3s ease;
 }
 
 button:hover{
     transform:scale(1.05);
+    box-shadow:0 8px 20px rgba(255,92,141,.35);
 }
+
+/* Lists */
 
 ul{
     text-align:left;
     display:inline-block;
+    line-height:1.8;
 }
+
+/* Scroll Reveal */
 
 .reveal{
     opacity:0;
@@ -124,11 +235,17 @@ ul{
     transform:translateY(0);
 }
 
+/* Floating Hearts */
+
 .heart{
     position:fixed;
+
     bottom:-50px;
+
     pointer-events:none;
+
     z-index:-1;
+
     animation:rise linear forwards;
 }
 
@@ -139,9 +256,13 @@ ul{
     }
 }
 
+/* Cursor Sparkles */
+
 .sparkle{
     position:fixed;
+
     pointer-events:none;
+
     animation:sparkleFade .8s forwards;
 }
 
@@ -151,6 +272,8 @@ ul{
         transform:scale(0);
     }
 }
+
+/* Heartbeat */
 
 @keyframes heartbeat{
     0%,100%{
@@ -162,17 +285,31 @@ ul{
     }
 }
 
+/* Wedding Counter */
+
 #weddingCounter{
     color:#d6336c;
     font-weight:600;
     line-height:1.8;
 }
 
+/* Secret Message */
+
 #secret{
     margin-top:20px;
     color:#d6336c;
     font-weight:600;
 }
+
+/* Audio */
+
+audio{
+    width:100%;
+    max-width:350px;
+    margin-top:15px;
+}
+
+/* Mobile */
 
 @media(max-width:768px){
 
@@ -182,6 +319,14 @@ ul{
 
     h1{
         font-size:2.2rem;
+    }
+
+    .overlay-title{
+        font-size:2.2rem;
+    }
+
+    .tap-heart{
+        font-size:3rem;
     }
 
     .card{
